@@ -31,15 +31,13 @@ export const dateHandlingWithMinutes = (date) => {
   if (date) {
     const formattedDate = moment(date).format('DD/MM/YYYY HH:mm');
     const nowDate = Date.now();
-    const useDate = date.split(' GMT')[0];
 
-    const year =
-      moment(useDate).format('YYYY') === moment(nowDate).format('YYYY');
-    const month = moment(useDate).format('MM') === moment(nowDate).format('MM');
-    const day = moment(useDate).format('DD') === moment(nowDate).format('DD');
+    const year = moment(date).format('YYYY') === moment(nowDate).format('YYYY');
+    const month = moment(date).format('MM') === moment(nowDate).format('MM');
+    const day = moment(date).format('DD') === moment(nowDate).format('DD');
     if (year && month && day) {
-      const hour = moment(useDate).format('HH');
-      const minutes = moment(useDate).format('mm');
+      const hour = moment(date).format('HH');
+      const minutes = moment(date).format('mm');
       if (hour === moment(nowDate).format('HH')) {
         const diffM =
           parseInt(moment(nowDate).format('mm')) - parseInt(minutes);
