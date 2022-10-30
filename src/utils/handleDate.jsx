@@ -11,15 +11,18 @@ export const dateHandlingWithoutMinutes = (date) => {
       const hour = moment(date).format('HH');
       const minutes = moment(date).format('mm');
       if (hour === moment(date).format('HH')) {
-        const diffM =
-          parseInt(minutes) - parseInt(moment(nowDate).format('mm'));
+        const diffM = Math.abs(
+          parseInt(minutes) - parseInt(moment(nowDate).format('mm'))
+        );
 
         if (diffM === 0) {
           return 'agora';
         }
         return `${diffM} min atrás`;
       }
-      const diffH = parseInt(moment(nowDate).format('HH')) - parseInt(hour);
+      const diffH = Math.abs(
+        parseInt(moment(nowDate).format('HH')) - parseInt(hour)
+      );
       return `${diffH} hora${diffH > 1 && 's'} atrás`;
     }
     return formattedDate;
@@ -39,15 +42,18 @@ export const dateHandlingWithMinutes = (date) => {
       const hour = moment(date).format('HH');
       const minutes = moment(date).format('mm');
       if (hour === moment(nowDate).format('HH')) {
-        const diffM =
-          parseInt(moment(nowDate).format('mm')) - parseInt(minutes);
+        const diffM = Math.abs(
+          parseInt(moment(nowDate).format('mm')) - parseInt(minutes)
+        );
 
         if (diffM < 1) {
           return 'agora';
         }
         return `${diffM} min atrás`;
       }
-      const diffH = parseInt(moment(nowDate).format('HH')) - parseInt(hour);
+      const diffH = Math.abs(
+        parseInt(moment(nowDate).format('HH')) - parseInt(hour)
+      );
       return `${diffH} hora${diffH > 1 ? 's' : ''} atrás`;
     }
     return formattedDate;
