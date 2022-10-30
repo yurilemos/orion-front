@@ -23,22 +23,20 @@ export const AuthProvider = ({ children }) => {
         login,
         senha,
       });
+      message.destroy();
 
-      if (res.data.access_token) {
+      if (res?.data?.access_token) {
         localStorage.setItem('user', JSON.stringify(res.data.user));
         localStorage.setItem('token', res.data.access_token);
         setCurrentUser(res.data.user);
         setToken(res.data.access_token);
-        message.destroy();
       } else {
-        message.destroy();
         message.error('Usuário ou senha inválido');
       }
     } catch (error) {
-      message.destroy();
-      if (error.response) {
-        message.destroy();
-        message.error(error.response);
+      message.error('Erro no login');
+      if (error.response.data.message) {
+        message.error(error.response.data.message);
       }
     }
   };

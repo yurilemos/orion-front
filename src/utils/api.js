@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-export const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:5050';
+export const API_URL =
+  process.env.REACT_APP_API_URL || 'https://orion-api-v1.herokuapp.com';
+
+export const API_URL2 = 'http://127.0.0.1:5050';
 
 export const api = {
   main: axios.create({

@@ -2,6 +2,7 @@ import React from 'react';
 import { Input, Form, Button, message } from 'antd';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { API_URL } from '../../utils/api';
 
 export const Registro = () => {
   const [form] = Form.useForm();
@@ -17,15 +18,13 @@ export const Registro = () => {
       });
 
       message.destroy();
-      navigate('/home');
+      navigate('/login');
     } catch (error) {
       message.destroy();
 
       message.error(error.message.data);
     }
   };
-
-  const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:5050';
 
   return (
     <div style={{ padding: '8rem 0' }}>

@@ -9,14 +9,14 @@ export const Login = () => {
   const context = useContext(AuthContext);
 
   const onFinish = async (values) => {
-    message.loading('Analizando os dados');
     await context.login({ login: values.login, senha: values.senha });
-    navigate('/home');
-    message.destroy();
+
+    if (context.token) {
+      navigate('/home');
+    }
   };
   const onFinishFailed = (error) => {
-    message.destroy();
-    message.error(error.response.data);
+    message.error('Login ou senha inválidos');
   };
 
   return (
@@ -85,7 +85,7 @@ export const Login = () => {
               }}
             >
               <Button type="primary" htmlType="submit">
-                Submit
+                Confirmar
               </Button>
             </Form.Item>
           </Form>
