@@ -110,7 +110,7 @@ const UserModal = ({ open, onClose, groupId, userId }) => {
             notFoundContent={searchLoading ? <Spin size="small" /> : null}
           >
             {searchList
-              ?.filter((s) => !userList.find((u) => u.id === s.id))
+              ?.filter((s) => !userList?.find((u) => u.id === s.id))
               ?.map((user) => (
                 <Select.Option key={user.id} value={user.id}>
                   {user.nome}

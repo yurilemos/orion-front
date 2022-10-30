@@ -67,13 +67,13 @@ const Chat = ({
             )}
           </>,
           <>
-            {relations.find((r) => r.id === comment.relacao_id)?.nome && (
+            {relations?.find((r) => r.id === comment.relacao_id)?.nome && (
               <Tag
                 color={setColor(
-                  relations.find((r) => r.id === comment.relacao_id)?.estilo
+                  relations?.find((r) => r.id === comment.relacao_id)?.estilo
                 )}
               >
-                {relations.find((r) => r.id === comment.relacao_id)?.nome}
+                {relations?.find((r) => r.id === comment.relacao_id)?.nome}
               </Tag>
             )}
           </>,
