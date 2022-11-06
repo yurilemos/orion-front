@@ -2,7 +2,7 @@ import { message } from 'antd';
 import { api } from '../../../utils/api';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 
-export const useUserList = ({ groupId, search }) => {
+export const useUserList = ({ groupId, search, openModal }) => {
   const queryClient = useQueryClient();
 
   const getAllUserList = async () => {
@@ -43,7 +43,7 @@ export const useUserList = ({ groupId, search }) => {
     isIdle,
     data: userList,
   } = useQuery(['userList', groupId], getAllUserList, {
-    enabled: !!groupId,
+    enabled: !!groupId && !!openModal,
   });
 
   const { isLoading: searchLoading, data: searchList } = useQuery(

@@ -19,8 +19,13 @@ const CardContent = ({
   onEdit,
   onUserEdit,
   canEdit,
+  canCreate,
+  criador,
   groupDiscussion = true,
 }) => {
+  if (title === 'teste privado') {
+    console.log('canCreate:', canCreate || !groupDiscussion);
+  }
   return (
     <div
       style={{
@@ -47,7 +52,7 @@ const CardContent = ({
         {title}
 
         <div style={{ display: 'flex', gap: '1rem', zIndex: '10' }}>
-          {!isDisable && onUserEdit && canEdit && groupDiscussion && (
+          {onUserEdit && groupDiscussion && (
             <Button
               variant="primary"
               icon={<UserOutlined />}
@@ -58,7 +63,7 @@ const CardContent = ({
               }}
             />
           )}
-          {!isDisable && onCreate && (canEdit || !groupDiscussion) && (
+          {onCreate && (canCreate || !groupDiscussion) && (
             <Button
               variant="primary"
               icon={<PlusOutlined />}
@@ -112,7 +117,7 @@ const CardContent = ({
           color: 'rgb(140 135 135)',
         }}
       >
-        {creation}
+        {creation} - Criado por: {criador}
       </div>
     </div>
   );

@@ -77,16 +77,18 @@ export const Discussao = () => {
             alignItems: 'center',
           }}
         >
+          {(discussao.podeEditar || discussao.podeCriar) && (
+            <Button
+              variant="primary"
+              icon={<PlusOutlined />}
+              style={{ width: '50px' }}
+              onClick={(event) => {
+                setAddModal(true);
+              }}
+            />
+          )}
           {discussao.podeEditar && (
             <>
-              <Button
-                variant="primary"
-                icon={<PlusOutlined />}
-                style={{ width: '50px' }}
-                onClick={(event) => {
-                  setAddModal(true);
-                }}
-              />
               <Button
                 variant="primary"
                 icon={<EditOutlined />}
@@ -139,6 +141,7 @@ export const Discussao = () => {
                 }}
                 groupDiscussion={false}
                 isDisable={!assunto.podeEditar}
+                criador={assunto.criador}
               />
             </div>
           ))}

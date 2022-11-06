@@ -62,6 +62,7 @@ export const GruposArquivados = () => {
   const [deleteGroupModal, setDeleteGroupModal] = useState(false);
   const [addDiscussionModal, setAddDiscussionModal] = useState(false);
   const [userModal, setUserModal] = useState(false);
+  const [editUserModal, setEditUserModal] = useState(false);
   const [searchText, setSearchText] = useState('');
 
   return (
@@ -120,6 +121,7 @@ export const GruposArquivados = () => {
                 onUserEdit={() => {
                   setUserModal(true);
                   setGroup(grupo);
+                  setEditUserModal(grupo.podeEditar);
                 }}
               >
                 <div
@@ -212,6 +214,7 @@ export const GruposArquivados = () => {
         open={userModal}
         groupId={group?.id ?? ''}
         userId={currentUser.userId}
+        podeEditar={editUserModal}
       />
     </>
   );

@@ -5,7 +5,7 @@ import Table from '../../../components/table';
 import { useState } from 'react';
 import { Button, Select, Spin } from 'antd';
 
-const UserModal = ({ open, onClose, groupId, userId }) => {
+const UserModal = ({ open, onClose, groupId, userId, podeEditar }) => {
   const [search, setSearch] = useState(null);
   const [userAddResquest, setUserAddResquest] = useState([]);
   const {
@@ -18,6 +18,7 @@ const UserModal = ({ open, onClose, groupId, userId }) => {
   } = useUserList({
     groupId,
     search,
+    openModal: open,
   });
 
   const columns = [
@@ -30,12 +31,12 @@ const UserModal = ({ open, onClose, groupId, userId }) => {
       },
     },
     {
-      title: 'e-mail',
+      title: 'E-mail',
       dataIndex: 'email',
       key: 'email',
     },
     {
-      title: 'Tipo usuário',
+      title: 'Perfil',
       dataIndex: 'nivel_participacao',
       key: 'nivel_participacao',
       render: (value, record) => {
@@ -43,21 +44,29 @@ const UserModal = ({ open, onClose, groupId, userId }) => {
           return 'Administrador';
         }
         return (
-          <Select
-            style={{
-              width: 120,
-            }}
-            defaultValue={value}
-            onChange={(e) => {
-              changeUserPermission({
-                nivel_participacao: e,
-                userId: record.id,
-              });
-            }}
-          >
-            <Select.Option value={2}>Editor</Select.Option>
-            <Select.Option value={3}>Leitor</Select.Option>
-          </Select>
+          <>
+            {podeEditar ? (
+              <Select
+                style={{
+                  width: 120,
+                }}
+                defaultValue={value}
+                onChange={(e) => {
+                  changeUserPermission({
+                    nivel_participacao: e,
+                    userId: record.id,
+                  });
+                }}
+              >
+                <Select.Option value={2}>Editor</Select.Option>
+                <Select.Option value={3}>Leitor</Select.Option>
+              </Select>
+            ) : value === 2 ? (
+              'Editor'
+            ) : (
+              'Leitor'
+            )}
+          </>
         );
       },
     },
@@ -65,7 +74,8 @@ const UserModal = ({ open, onClose, groupId, userId }) => {
       title: 'Ação',
       key: 'acao',
       render: (_, record) =>
-        userId !== record.id && (
+        userId !== record.id &&
+        podeEditar && (
           <Button
             type="link"
             block
@@ -86,7 +96,7 @@ const UserModal = ({ open, onClose, groupId, userId }) => {
         onOk={onClose}
         onCancel={onClose}
         width={1000}
-        title="Gerenciar usuários"
+        title="Participantes do grupo"
         footer={[
           <Button key="back" type="primary" onClick={onClose}>
             Ok
@@ -95,38 +105,42 @@ const UserModal = ({ open, onClose, groupId, userId }) => {
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <Table columns={columns} dataSource={userList} />
-          <h3>Adicionar um novo membro para o grupo</h3>
-          <Select
-            mode="multiple"
-            showSearch
-            optionFilterProp="children"
-            value={userAddResquest}
-            onChange={(v) => {
-              setUserAddResquest(v);
-            }}
-            onSearch={(e) => {
-              setSearch(e);
-            }}
-            notFoundContent={searchLoading ? <Spin size="small" /> : null}
-          >
-            {searchList
-              ?.filter((s) => !userList?.find((u) => u.id === s.id))
-              ?.map((user) => (
-                <Select.Option key={user.id} value={user.id}>
-                  {user.nome}
-                </Select.Option>
-              ))}
-          </Select>
-          {userAddResquest.length > 0 && (
-            <Button
-              style={{ width: 200 }}
-              onClick={() => {
-                addToUserList({ userList: userAddResquest });
-                setUserAddResquest([]);
-              }}
-            >
-              Adicionar membro(s)
-            </Button>
+          {podeEditar && (
+            <>
+              <h3>Adicionar um novo membro para o grupo</h3>
+              <Select
+                mode="multiple"
+                showSearch
+                optionFilterProp="children"
+                value={userAddResquest}
+                onChange={(v) => {
+                  setUserAddResquest(v);
+                }}
+                onSearch={(e) => {
+                  setSearch(e);
+                }}
+                notFoundContent={searchLoading ? <Spin size="small" /> : null}
+              >
+                {searchList
+                  ?.filter((s) => !userList?.find((u) => u.id === s.id))
+                  ?.map((user) => (
+                    <Select.Option key={user.id} value={user.id}>
+                      {user.nome}
+                    </Select.Option>
+                  ))}
+              </Select>
+              {userAddResquest.length > 0 && (
+                <Button
+                  style={{ width: 200 }}
+                  onClick={() => {
+                    addToUserList({ userList: userAddResquest });
+                    setUserAddResquest([]);
+                  }}
+                >
+                  Adicionar membro(s)
+                </Button>
+              )}
+            </>
           )}
         </div>
       </Modal>

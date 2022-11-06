@@ -57,6 +57,7 @@ export const Home = () => {
   const [deleteGroupModal, setDeleteGroupModal] = useState(false);
   const [addDiscussionModal, setAddDiscussionModal] = useState(false);
   const [userModal, setUserModal] = useState(false);
+  const [editUserModal, setEditUserModal] = useState(false);
   const [searchText, setSearchText] = useState('');
 
   return (
@@ -100,6 +101,8 @@ export const Home = () => {
                 title={grupo.nome}
                 description={grupo.descricao}
                 canEdit={grupo.podeEditar}
+                canCreate={grupo.podeCriar}
+                criador={grupo.criador}
                 creation={dateHandlingWithoutMinutes(grupo.data_criacao)}
                 onCreate={() => {
                   setAddDiscussionModal(true);
@@ -116,6 +119,7 @@ export const Home = () => {
                 onUserEdit={() => {
                   setUserModal(true);
                   setGroup(grupo);
+                  setEditUserModal(grupo.podeEditar);
                 }}
                 isDisable={!grupo.podeEditar}
               >
@@ -129,6 +133,7 @@ export const Home = () => {
                   {grupo.discussoes.map((discussao) => (
                     <CardContent
                       title={discussao.nome}
+                      criador={discussao.criador}
                       canEdit={grupo.podeEditar}
                       description={discussao.descricao}
                       creation={dateHandlingWithoutMinutes(
@@ -164,6 +169,8 @@ export const Home = () => {
                 description={grupo.descricao}
                 visibility={grupo.visibilidade}
                 canEdit={grupo.podeEditar}
+                canCreate={grupo.podeCriar}
+                criador={grupo.criador}
                 creation={dateHandlingWithoutMinutes(grupo.data_criacao)}
                 onCreate={() => {
                   setAddDiscussionModal(true);
@@ -180,6 +187,7 @@ export const Home = () => {
                 onUserEdit={() => {
                   setUserModal(true);
                   setGroup(grupo);
+                  setEditUserModal(grupo.podeEditar);
                 }}
               >
                 <div
@@ -197,6 +205,7 @@ export const Home = () => {
                       creation={dateHandlingWithoutMinutes(
                         discussao.data_criacao
                       )}
+                      criador={discussao.criador}
                       key={discussao.id}
                       onClick={() => handleDiscussaoClick(discussao.id)}
                     />
@@ -272,6 +281,7 @@ export const Home = () => {
         open={userModal}
         groupId={group?.id ?? ''}
         userId={currentUser.userId}
+        podeEditar={editUserModal}
       />
     </>
   );
