@@ -41,7 +41,7 @@ const UserModal = ({ open, onClose, groupId, userId, podeEditar }) => {
       key: 'nivel_participacao',
       render: (value, record) => {
         if (value === 1) {
-          return 'Administrador';
+          return 'Criador';
         }
         return (
           <>
