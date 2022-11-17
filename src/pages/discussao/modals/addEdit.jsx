@@ -3,6 +3,7 @@ import { Form, Input } from 'antd';
 import { useEffect } from 'react';
 import Modal from '../../../components/modal';
 
+/* Modal de edição de discussão ou adição de assunto */
 const AssuntoDiscussionModal = ({
   open,
   onClose,

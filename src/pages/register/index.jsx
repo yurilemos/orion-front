@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../utils/api';
 
+/* Tela de registro */
 export const Registro = () => {
   const [form] = Form.useForm();
   let navigate = useNavigate();

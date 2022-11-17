@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../../utils/auth';
 import { useContext } from 'react';
 
+/* Tela de login */
 export const Login = () => {
   let navigate = useNavigate();
   const context = useContext(AuthContext);

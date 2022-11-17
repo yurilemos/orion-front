@@ -11,6 +11,7 @@ import { PlusOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import useDiscussion from './hooks/discussionHooks';
 import { dateHandlingWithoutMinutes } from '../../utils/handleDate';
 
+/* Tela de discussão */
 export const Discussao = () => {
   const navigate = useNavigate();
   const { discussionId } = useParams();

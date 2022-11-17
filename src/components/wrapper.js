@@ -4,6 +4,8 @@ import Layout from './layout';
 import { useContext } from 'react';
 import AuthContext from '../utils/auth';
 
+/* Componente que verifica o token e decide se irá para tela de login 
+ou se irá para a tela selecionada e aplicar o componente layout */
 const Wrapper = ({ children }) => {
   const { token } = useContext(AuthContext);
   let navigate = useNavigate();

@@ -2,6 +2,7 @@ import { message } from 'antd';
 import { api } from '../../../utils/api';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 
+/* Hook das request para a API da gerência de usuários */
 export const useUserList = ({ groupId, search, openModal }) => {
   const queryClient = useQueryClient();
 

@@ -2,6 +2,7 @@ import { message } from 'antd';
 import { api } from '../../../utils/api';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 
+/* Hook das request para a API das discussões */
 export const useDiscussion = ({ discussionId }) => {
   const queryClient = useQueryClient();
 

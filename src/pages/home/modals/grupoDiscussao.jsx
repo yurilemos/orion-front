@@ -3,6 +3,7 @@ import Modal from '../../../components/modal';
 import { Checkbox, Form, Input, Select } from 'antd';
 import { useEffect } from 'react';
 
+/* Modal de adição/edição dos grupos de discussão */
 const GrupoDiscussaoModal = ({ open, onClose, title, onFinish, formValue }) => {
   const [form] = Form.useForm();
 

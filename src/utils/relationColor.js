@@ -1,3 +1,5 @@
+/* Funções para tratar as cores que são usadas nas 
+tags de relação entre falas */
 export const setColor = (estilo) => {
   if (estilo === 'negativo') {
     return 'volcano';

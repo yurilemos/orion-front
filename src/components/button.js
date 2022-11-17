@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button as AntdButton } from 'antd';
 
+/* Componente do botão */
 const Button = ({
   children,
   onClick,

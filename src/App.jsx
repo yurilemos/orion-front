@@ -13,6 +13,7 @@ const queryClient = new QueryClient({
   },
 });
 
+/* Componente que renderiza todo o sistema, como se fosse uma única tela */
 const App = () => {
   return (
     <AuthProvider>

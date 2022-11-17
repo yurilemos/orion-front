@@ -13,6 +13,7 @@ import UserModal from '../home/modals/userModal';
 import DeleteModal from '../../components/modals/deleteModal';
 import { dateHandlingWithoutMinutes } from '../../utils/handleDate';
 
+/* Tela dos grupos arquivados */
 export const GruposArquivados = () => {
   const navigate = useNavigate();
   const handleDiscussaoClick = (id) => {
@@ -22,6 +23,8 @@ export const GruposArquivados = () => {
 
   const [group, setGroup] = useState(null);
 
+  /* visibilidade = 1 => grupo público
+  visibilidade = 2 => grupo privado */
   const { visibilidade } = useParams();
 
   const {

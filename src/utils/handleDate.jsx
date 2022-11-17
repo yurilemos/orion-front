@@ -1,5 +1,6 @@
 import moment from 'moment';
 
+/* Funções para tratar as datas recebidas pela API */
 export const dateHandlingWithoutMinutes = (date) => {
   if (date) {
     const formattedDate = moment(date).format('DD/MM/YYYY');

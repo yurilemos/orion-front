@@ -5,6 +5,7 @@ import Table from '../../../components/table';
 import { useState } from 'react';
 import { Button, Select, Spin } from 'antd';
 
+/* Modal de participantes do grupo de discussão */
 const UserModal = ({ open, onClose, groupId, userId, podeEditar }) => {
   const [search, setSearch] = useState(null);
   const [userAddResquest, setUserAddResquest] = useState([]);

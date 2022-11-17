@@ -9,6 +9,7 @@ import { useContext } from 'react';
 import AuthContext from '../../utils/auth';
 import { ProfilePic } from '../../components/profilePic';
 
+/* Tela de perfil */
 export const Perfil = () => {
   const [isDisable, setDisable] = useState(true);
   const [form] = Form.useForm();

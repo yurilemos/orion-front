@@ -13,6 +13,7 @@ import UserModal from '../home/modals/userModal';
 import DeleteModal from '../../components/modals/deleteModal';
 import { dateHandlingWithoutMinutes } from '../../utils/handleDate';
 
+/* Tela dos grupos do usuário */
 export const MeusGrupos = () => {
   const navigate = useNavigate();
   const handleDiscussaoClick = (id) => {

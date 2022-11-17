@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal as AntdModal } from 'antd';
 
+/* Componente do modal */
 const Modal = ({ children, onOk, visible, onCancel, title, width, footer }) => {
   return (
     <AntdModal

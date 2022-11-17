@@ -11,6 +11,8 @@ const modules = {
   ],
 };
 
+/* Componente da caixa de texto na tela assunto,
+onde será digitada a fala */
 const Editor = ({
   onSubmit,
   submitting,

@@ -1,6 +1,7 @@
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
 
+/* Componente do avatar do usuário */
 export const AvatarPic = ({ avatar, width, height }) => {
   return (
     <Avatar

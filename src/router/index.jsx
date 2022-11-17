@@ -11,6 +11,7 @@ import { MeusGrupos } from '../pages/meusGrupos';
 import { GruposArquivados } from '../pages/gruposArquivados';
 import { Perfil } from '../pages/perfil';
 
+/* Componente que define as rotas de cada tela do sistema */
 export const Router = () => {
   return (
     <BrowserRouter>

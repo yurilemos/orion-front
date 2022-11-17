@@ -13,8 +13,11 @@ import useGroup from './hooks/groupHooks';
 import UserModal from './modals/userModal';
 import { dateHandlingWithoutMinutes } from '../../utils/handleDate';
 
+/* Tela inicial, tela dos grupos de discussão */
 export const Home = () => {
   const navigate = useNavigate();
+
+  /* id = id da discussão selecionada */
   const handleDiscussaoClick = (id) => {
     navigate(`/discussao/${id}`);
   };

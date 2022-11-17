@@ -7,6 +7,8 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 
+/* Componente do card usado para grupo de discussão, 
+discussão e assunto */
 const CardContent = ({
   title,
   description,

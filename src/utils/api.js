@@ -1,10 +1,14 @@
 import axios from 'axios';
 
+/* URL da API */
 export const API_URL =
   process.env.REACT_APP_API_URL || 'https://orion-api-v1.herokuapp.com';
 
+/* URL da API local (usada para casos de teste */
 export const API_URL2 = 'http://127.0.0.1:5050';
 
+/* Definição de todas as chamadas da api, para simplicicação de código 
+(não ter que sempre passar o url e o token) */
 export const api = {
   main: axios.create({
     baseURL: API_URL,
@@ -33,13 +37,9 @@ api.main.interceptors.request.use(async (config) => {
 
 api.main.interceptors.response.use(
   function (response) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
     return response;
   },
   function (error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
     if (error.response.data.msg === 'Token has expired') {
       localStorage.removeItem('token');
     }

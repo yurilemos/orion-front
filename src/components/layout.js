@@ -51,6 +51,7 @@ const items = [
   },
 ];
 
+/* Componente que inclui o menu, header e o nome da página */
 const Layout = ({ children }) => {
   const { logout, currentUser } = useContext(AuthContext);
   const location = useLocation();

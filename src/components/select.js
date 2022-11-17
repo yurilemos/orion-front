@@ -2,6 +2,7 @@ import { Select as AntdSelect } from 'antd';
 import React from 'react';
 const { Option } = AntdSelect;
 
+/* Componente do select input */
 const Select = ({ options, onChange, style, defaultValue }) => (
   <AntdSelect
     defaultValue={defaultValue}

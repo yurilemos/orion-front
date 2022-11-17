@@ -4,6 +4,7 @@ import Chat from './components/chat';
 import useAssunto from './hooks/useAssunto';
 import useFala from './hooks/useFala';
 
+/* Tela assunto */
 export const Assunto = () => {
   const { assuntoId } = useParams();
 

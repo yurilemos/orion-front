@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from '../modal';
 import { WarningOutlined } from '@ant-design/icons';
 
+/* Modal de deleção de componente */
 const DeleteModal = (props) => {
   return (
     <Modal

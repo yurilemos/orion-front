@@ -7,6 +7,8 @@ import { api, API_URL } from './api';
 
 const AuthContext = createContext({});
 
+/* Componente com os dados autenticados do usuário, 
+pode ser acessado em qualquer parte das telas ou componentes renderizados */
 export const AuthProvider = ({ children }) => {
   function getToken() {
     const userToken = localStorage.getItem('token');

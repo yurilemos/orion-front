@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from '../../../components/modal';
 import { Form, Input } from 'antd';
 
+/* Modal de adição das discussões */
 const DiscussaoModal = (props) => {
   const [form] = Form.useForm();
 

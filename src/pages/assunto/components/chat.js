@@ -8,6 +8,7 @@ import { setColor } from '../../../utils/relationColor';
 import { AvatarPic } from '../../../components/avatarPic';
 import AuthContext from '../../../utils/auth';
 
+/* Componente que exibe as falas da tela assunto */
 const Chat = ({
   comments,
   isDisable,
@@ -22,10 +23,12 @@ const Chat = ({
   const [deleteModal, setDeleteModal] = useState(false);
   const { currentUser } = useContext(AuthContext);
 
+  /* Chamada recursiva para as falas filhas */
   const RecursiveComponent = ({ comment }) => {
     const hasChildren =
       comment.children !== undefined && comment.children.length > 0;
 
+    /* Verifica se o criador dessa fala possui um avatar */
     const getParticipantes = (id) => {
       const usuario = participantes.filter((p) => p.id === id);
       return usuario[0]?.avatar ?? '';
@@ -106,6 +109,7 @@ const Chat = ({
     );
   };
 
+  /* Lista todas as falas */
   const CommentList = ({ comments }) => {
     return (
       <>
