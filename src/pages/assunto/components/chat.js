@@ -81,7 +81,10 @@ const Chat = ({
       >
         {falaId === comment.id && !deleteModal && (
           <Editor
-            onSubmit={handleSubmit}
+            onSubmit={(e) => {
+              handleSubmit(e);
+              setFalaId(null);
+            }}
             submitting={submitting}
             value={value}
             onCancel={() => {

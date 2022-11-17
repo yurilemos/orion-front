@@ -20,6 +20,7 @@ const Editor = ({
   relations,
 }) => {
   const [form] = Form.useForm();
+
   useEffect(() => {
     if (disable) {
       return;
@@ -42,6 +43,7 @@ const Editor = ({
               form.setFieldsValue({ conteudo: '' });
             } else {
               onSubmit(value);
+              form.setFieldsValue({ conteudo: '' });
             }
           }}
           form={form}
