@@ -3,6 +3,15 @@ import Modal from '../../../components/modal';
 import { Checkbox, Form, Input, Select } from 'antd';
 import { useEffect } from 'react';
 
+const layout = {
+  labelCol: {
+    span: 5,
+  },
+  wrapperCol: {
+    span: 18,
+  },
+};
+
 /* Modal de adição/edição dos grupos de discussão */
 const GrupoDiscussaoModal = ({ open, onClose, title, onFinish, formValue }) => {
   const [form] = Form.useForm();
@@ -36,6 +45,7 @@ const GrupoDiscussaoModal = ({ open, onClose, title, onFinish, formValue }) => {
         onFinish={onFinish}
         onFinishFailed={(e) => {}}
         autoComplete="off"
+        {...layout}
       >
         <Form.Item
           label="Titulo"

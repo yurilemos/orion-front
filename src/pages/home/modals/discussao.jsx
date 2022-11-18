@@ -2,6 +2,14 @@ import React from 'react';
 import Modal from '../../../components/modal';
 import { Form, Input } from 'antd';
 
+const layout = {
+  labelCol: {
+    span: 5,
+  },
+  wrapperCol: {
+    span: 18,
+  },
+};
 /* Modal de adição das discussões */
 const DiscussaoModal = (props) => {
   const [form] = Form.useForm();
@@ -24,6 +32,7 @@ const DiscussaoModal = (props) => {
         onFinish={props.onFinish}
         onFinishFailed={(e) => {}}
         autoComplete="off"
+        {...layout}
       >
         <Form.Item
           label="Titulo"

@@ -3,6 +3,14 @@ import { Form, Input } from 'antd';
 import { useEffect } from 'react';
 import Modal from '../../../components/modal';
 
+const layout = {
+  labelCol: {
+    span: 5,
+  },
+  wrapperCol: {
+    span: 18,
+  },
+};
 /* Modal de edição de discussão ou adição de assunto */
 const AssuntoDiscussionModal = ({
   open,
@@ -40,6 +48,7 @@ const AssuntoDiscussionModal = ({
         onFinish={onFinish}
         onFinishFailed={(e) => {}}
         autoComplete="off"
+        {...layout}
       >
         <Form.Item
           label="Titulo"

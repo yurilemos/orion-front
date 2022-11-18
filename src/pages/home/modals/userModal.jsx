@@ -84,7 +84,7 @@ const UserModal = ({ open, onClose, groupId, userId, podeEditar }) => {
               deleteUserFromGroup(record.id);
             }}
           >
-            Deletar
+            Remover
           </Button>
         ),
     },
